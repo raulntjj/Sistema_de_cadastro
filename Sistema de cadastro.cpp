@@ -2,15 +2,16 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#define PE 5720
+#define ES 45000
 
 int controle_estoque()
 {
-    //suporta ate 12k de produtos.
-    float codproduto[12000] = {0}, estoque[12000] = {0}, valor[12000] = {0}, valor_de_mercado[12000] = {0}, calculo_de_porcetagem = 0, porcentagem = 0;
-    char produto[12000] [30];
-    int numero = 0;
+    //suporta ate 45 mil produtos.
+    float codproduto[ES] = {0}, estoque[ES] = {0}, valor[ES] = {0}, valor_de_mercado[ES] = {0}, calculo_de_porcetagem = 0, porcentagem = 0;
+    char produto[ES] [30];
+    int numero = 0, cod = 0;
     char resposta[2];
-    long int cod = 0;
     srand(time(NULL));
     for (;;)
     {
@@ -19,10 +20,10 @@ int controle_estoque()
         scanf ("%s", &resposta[2]);
         if (resposta[2] == 's')
         {
-            printf ("Codigo ->%d\n", rand() % 12000);
+            printf ("Codigo ->%d\n", rand() % ES);
         }
         printf ("Digite o codigo em que o produto serao cadastrado:\n");
-        scanf ("%li", &cod);
+        scanf ("%d", &cod);
         if (codproduto[cod] == 0)
         {
             printf ("Confirme o codigo:\n");
@@ -30,8 +31,8 @@ int controle_estoque()
             if (codproduto[cod] != cod)
             {
                 system ("cls");
-                printf ("\n\n\nhmm entao vc � espertinho e quer bugar meu sistema ne\n");
-                printf ("O produto foi cadastrada no primeiro codigo digitado: %li\n\n\n", cod);
+                printf ("\n\n\nhmm entao vc é espertinho e quer bugar meu sistema ne\n");
+                printf ("O produto foi cadastrada no primeiro codigo digitado: %d\n\n\n", cod);
                 codproduto[cod] = cod;
             }
             printf ("Digite o nome do produto:\n");
@@ -74,7 +75,7 @@ int controle_estoque()
             {
                 system ("cls");
                 printf ("----------------------------------\n\n\n----- Pagina de visualizacaoo -----\n\n\n----------------------------------\n\n\n");
-                printf ("------------ Produto de codigo: %0.lf -------------\n\nNome do produto: %s\n\nValor de custo: R$ %.0f\n\nValor de mercado: R$ %.2f\n\nProdutos em estoque: %.0f unidades.\n\n", codproduto[numero], produto[numero], valor[numero], valor_de_mercado[numero], estoque[numero]);
+                printf ("------------ Produto de codigo: %0.f -------------\n\nNome do produto: %s\n\nValor de custo: R$ %.0f\n\nValor de mercado: R$ %.2f\n\nProdutos em estoque: %.0f unidades.\n\n", codproduto[numero], produto[numero], valor[numero], valor_de_mercado[numero], estoque[numero]);
                 printf ("Deseja ver os dados de outro produto? (sim ou nao)\n");
                 scanf ("%s", &resposta[2]);
                 system ("cls");
@@ -89,13 +90,13 @@ int controle_estoque()
     return 0;
 }
 
-int controle_pessoas()//ainda nao finalizado!
+//suporta até 5720 pessoas.
+int controle_pessoas()
 {
-    float codpessoa[12000] = {0}, idade[12000] = {0}, altura[12000] = {0};
-    int numero = 0;
-    char nome[12000] [30], sobrenome[12000] [80], matricula[12000] [80], sexo[12000] [80], data[12000] [80];
+    float codpessoa[PE] = {0}, idade[PE] = {0}, altura[PE] = {0};
+    int numero = 0, cod = 0;
+    char nome[PE] [30], sobrenome[PE] [80], matricula[PE] [80], sexo[PE] [80], data[PE] [80];
 	char resposta[2];
-	long int cod = 0;
     srand(time(NULL));
     for (;;)
     {
@@ -104,10 +105,10 @@ int controle_pessoas()//ainda nao finalizado!
         scanf ("%s", &resposta[2]);
         if (resposta[2] == 's')
         {
-            printf ("Codigo -> %d\n", rand() % 12000);
+            printf ("Codigo -> %d\n", rand() % PE);
         }
         printf ("Digite o codigo em que a pessoa sera cadastrada:\n");
-        scanf ("%li", &cod);
+        scanf ("%d", &cod);
         if (codpessoa[cod] == 0)
         {
             printf ("Confirme o codigo:\n");
@@ -161,7 +162,7 @@ int controle_pessoas()//ainda nao finalizado!
             {
                 system ("cls");
                 printf ("----------------------------------\n\n\n----- Pagina de visualizacao -----\n\n\n----------------------------------\n\n\n");
-                printf ("------------ Produto de codigo: %.0f -------------\n\nNome: %s %s.\n\nIdade: %.0f Anos.\n\nData de nascimento: %s.\n\nSexo: %s.\n\nAltura: %.2f Metros.\n\nMatrícula: %s\n", codpessoa[numero], nome[numero], sobrenome[numero], idade[numero], data[numero], sexo[numero], altura[numero], matricula[numero]);
+                printf ("------------ Produto de codigo: %.0f -------------\n\nNome: %s %s.\n\nIdade: %.0f Anos.\n\nData de nascimento: %s.\n\nSexo: %s.\n\nAltura: %.2f Metros.\n\nMatricula: %s\n\n", codpessoa[numero], nome[numero], sobrenome[numero], idade[numero], data[numero], sexo[numero], altura[numero], matricula[numero]);
                 printf ("Deseja ver os dados de outra pessoa? (sim ou nao)\n");
                 scanf ("%s", &resposta[2]);
                 system ("cls");
@@ -182,7 +183,7 @@ int main()
     printf ("-----------------------------------------\n\n\n\n- Seja bem vindo ao sistema de cadastro -\n---- do raulntjj o + brabo de goias -----\n\n\n\n-----------------------------------------\n\n\n");
     system ("pause");
     system ("cls");
-    printf ("-- Deseja utilizar qual sistema de cadastro? --\n- Escreva: (Estoque) para controle de estoque -\n- Escreva: (Pessoas) para controle de pessoas -> ainda nao finalizado-\n");
+    printf ("-- Deseja utilizar qual sistema de cadastro? --\n- Escreva: (Estoque) para controle de estoque -\n- Escreva: (Pessoas) para controle de pessoas\n");
     scanf ("%s", &resposta[2]);
     system ("cls");
     if (resposta[2] == 'E' || resposta[2] == 'e')
