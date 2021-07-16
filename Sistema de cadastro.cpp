@@ -7,7 +7,7 @@
 
 int controle_estoque()
 {
-    //suporta ate 45 mil produtos.
+    //suporta ate 45 mil produtos
     float codproduto[ES] = {0}, estoque[ES] = {0}, valor[ES] = {0}, valor_de_mercado[ES] = {0}, calculo_de_porcetagem = 0, porcentagem = 0;
     char produto[ES] [30];
     int numero = 0, cod = 0;
@@ -90,7 +90,7 @@ int controle_estoque()
     return 0;
 }
 
-//suporta até 5720 pessoas.
+//suporta até 5720 pessoas
 int controle_pessoas()
 {
     float codpessoa[PE] = {0}, idade[PE] = {0}, altura[PE] = {0};
